@@ -46,7 +46,6 @@ class TransactionRepo(quill: Quill.Postgres[SnakeCase]) extends TableRepo[Ticket
 
         dropTable *> createTable
 
-
 object TransactionRepo:
     val layer: ZLayer[Quill.Postgres[SnakeCase], Nothing, TableRepo[TicketTransaction]] =
         ZLayer.fromFunction(quill => new TransactionRepo(quill))
